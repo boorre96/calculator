@@ -46,6 +46,9 @@ private slots:
 
     void on_SubtractionButton_clicked();
 
+    void on_DivisionButton_clicked();
+
+    void on_MultiplikationButton_clicked();
 
 private:
     Ui::MainWindow *ui;

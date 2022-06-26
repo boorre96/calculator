@@ -116,3 +116,24 @@ void MainWindow::on_SubtractionButton_clicked()
     }
 }
 
+
+void MainWindow::on_DivisionButton_clicked()
+{
+
+}
+
+
+void MainWindow::on_MultiplikationButton_clicked()
+{
+    if(oldNumber==0){
+        oldNumber = numberOnDisplay.toInt();
+        numberOnDisplay.clear();
+        ui->DisplayNumber->setText("0");
+    }
+    else{
+        oldNumber = calculate.multiplikation(oldNumber, numberOnDisplay.toInt());
+        ui->DisplayNumber->setText(QString::number(oldNumber));
+        numberOnDisplay.clear();
+    }
+}
+
