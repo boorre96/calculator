@@ -6,10 +6,10 @@ class Calculations
 {
 public:
     Calculations();
-    int addition(int currentNumber, int numberToBeAdded);
-    int subtraction(int currentNumber, int numberToBeAdded);
-    int division(int currentNumber, int numberToBeAdded);
-    int multiplikation(int currentNumber, int numberToBeAdded);
+    double addition(double currentNumber, double numberToBeAdded);
+    double subtraction(double currentNumber, double numberToBeAdded);
+    double division(double currentNumber, double numberToBeAdded);
+    double multiplikation(double currentNumber, double numberToBeAdded);
 };
 
 #endif // CALCULATIONS_H

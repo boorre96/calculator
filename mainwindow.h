@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <iostream>
 #include <cmath>
+#include <QMessageBox>
 #include <QString>
 #include <string>
 #include "calculations.h"
@@ -53,6 +54,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QString numberOnDisplay = "";
-    int oldNumber = 0;
+    double oldNumber = 0;
 };
 #endif // MAINWINDOW_H

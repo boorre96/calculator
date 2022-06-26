@@ -17,7 +17,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_Button0_clicked()
 {
-    if(numberOnDisplay=="0")
+    if(ui->DisplayNumber->text() == "0")
         return;
     else{
         numberOnDisplay += ui->Button0->text();
@@ -119,7 +119,21 @@ void MainWindow::on_SubtractionButton_clicked()
 
 void MainWindow::on_DivisionButton_clicked()
 {
-
+    if(oldNumber==0){
+        oldNumber = numberOnDisplay.toInt();
+        numberOnDisplay.clear();
+        ui->DisplayNumber->setText("0");
+    }
+    else if(ui->DisplayNumber->text() == "0"){
+        QMessageBox QmessgBox;
+        QmessgBox.setText("You can't divide by 0!");
+        QmessgBox.exec();
+    }
+    else{
+        oldNumber = calculate.division(oldNumber, numberOnDisplay.toInt());
+        ui->DisplayNumber->setText(QString::number(oldNumber));
+        numberOnDisplay.clear();
+    }
 }
 
 
