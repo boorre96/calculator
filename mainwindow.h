@@ -1,13 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "calculations.h"
+#include "buttonpressedtracker.h"
+
 #include <QMainWindow>
 #include <iostream>
 #include <cmath>
 #include <QMessageBox>
 #include <QString>
-#include <string>
-#include "calculations.h"
+#include <QDebug>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,6 +20,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
     Calculations calculate;
+    ButtonPressedTracker buttonPressedTracker;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -50,6 +54,10 @@ private slots:
     void on_DivisionButton_clicked();
 
     void on_MultiplikationButton_clicked();
+
+    void on_ButtonClear_clicked();
+
+    void on_ButtonEqual_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -14,7 +14,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_Button0_clicked()
 {
     if(ui->DisplayNumber->text() == "0")
@@ -89,6 +88,10 @@ void MainWindow::on_Button9_clicked()
 
 void MainWindow::on_AdditionButton_clicked()
 {
+    if(buttonPressedTracker.buttonLastPressedIsEmpty() || buttonPressedTracker.getButtonLastPressed() != ui->AdditionButton->text())
+        buttonPressedTracker.buttonLastPressed(ui->AdditionButton->text());
+
+
     if(oldNumber==0){
         oldNumber = numberOnDisplay.toInt();
         numberOnDisplay.clear();
@@ -104,6 +107,9 @@ void MainWindow::on_AdditionButton_clicked()
 
 void MainWindow::on_SubtractionButton_clicked()
 {
+    if(buttonPressedTracker.buttonLastPressedIsEmpty()|| buttonPressedTracker.getButtonLastPressed() != ui->SubtractionButton->text())
+        buttonPressedTracker.buttonLastPressed(ui->SubtractionButton->text());
+
     if(oldNumber==0){
         oldNumber = numberOnDisplay.toInt();
         numberOnDisplay.clear();
@@ -119,6 +125,9 @@ void MainWindow::on_SubtractionButton_clicked()
 
 void MainWindow::on_DivisionButton_clicked()
 {
+    if(buttonPressedTracker.buttonLastPressedIsEmpty()|| buttonPressedTracker.getButtonLastPressed() != ui->MultiplikationButton->text())
+        buttonPressedTracker.buttonLastPressed(ui->DivisionButton->text());
+
     if(oldNumber==0){
         oldNumber = numberOnDisplay.toInt();
         numberOnDisplay.clear();
@@ -139,6 +148,9 @@ void MainWindow::on_DivisionButton_clicked()
 
 void MainWindow::on_MultiplikationButton_clicked()
 {
+    if(buttonPressedTracker.buttonLastPressedIsEmpty()|| buttonPressedTracker.getButtonLastPressed() != ui->DivisionButton->text())
+        buttonPressedTracker.buttonLastPressed(ui->MultiplikationButton->text());
+
     if(oldNumber==0){
         oldNumber = numberOnDisplay.toInt();
         numberOnDisplay.clear();
@@ -149,5 +161,30 @@ void MainWindow::on_MultiplikationButton_clicked()
         ui->DisplayNumber->setText(QString::number(oldNumber));
         numberOnDisplay.clear();
     }
+}
+
+
+void MainWindow::on_ButtonClear_clicked()
+{
+    numberOnDisplay.clear();
+    ui->DisplayNumber->setText("0");
+    oldNumber = 0;
+}
+
+
+void MainWindow::on_ButtonEqual_clicked()
+{
+    if(buttonPressedTracker.getButtonLastPressed() == "")
+        return;
+    else if(buttonPressedTracker.getButtonLastPressed() == "+")
+        MainWindow::on_AdditionButton_clicked();
+    else if(buttonPressedTracker.getButtonLastPressed() == "-")
+        MainWindow::on_SubtractionButton_clicked();
+    else if(buttonPressedTracker.getButtonLastPressed() == "*")
+        MainWindow::on_MultiplikationButton_clicked();
+    else if(buttonPressedTracker.getButtonLastPressed() == "/")
+        MainWindow::on_DivisionButton_clicked();
+    buttonPressedTracker.clearButtonPressed();
+
 }
 
